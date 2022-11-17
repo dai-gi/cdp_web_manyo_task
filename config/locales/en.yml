@@ -30,4 +30,17 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  common:
+    show: Show
+    edit: Edit
+    destroy: Destroy
+    back: Back
+  tasks:
+    index:
+      title: Tasks Index page
+    new:
+      title: New Task Page
+    edit:
+      title: Edit Task Page
+    show:
+      title: Show Task Page
