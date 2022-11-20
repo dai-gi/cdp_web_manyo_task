@@ -10,6 +10,9 @@
   </head>
 
   <body>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
       <ul>
         <li>
           <%= link_to "Tasks Index", tasks_path, id: "tasks-index" %>

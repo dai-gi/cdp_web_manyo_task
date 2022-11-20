@@ -1,5 +1,13 @@
 <h1><%= t('.title') %></h1>
 <%= form_with(model: @task, local: true) do |form| %>
+  <% if @task.errors.any? %>
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div><%= form.label :title %></div>
   <div><%= form.text_field :title %></div>
   <div><%= form.label :content %></div>

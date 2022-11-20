@@ -30,6 +30,15 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    attributes:
+      task:
+        title: Title
+        content: Content
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: can't be blank
   common:
     show: Show
     edit: Edit
@@ -44,3 +53,9 @@ en:
       title: Edit Task Page
     show:
       title: Show Task Page
+    create:
+      created: Task was successfully created.
+    update:
+      updated: Task was successfully updated.
+    destroy:
+      destroyed: Task was successfully destroyed.
