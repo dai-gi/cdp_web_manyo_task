@@ -46,7 +46,7 @@ en:
     back: Back
   tasks:
     index:
-      title: Tasks Index page
+      title: Tasks Index Page
     new:
       title: New Task Page
     edit:
