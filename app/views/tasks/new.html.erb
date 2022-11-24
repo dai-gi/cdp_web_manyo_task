@@ -8,10 +8,14 @@
       </ul>
     </div>
   <% end %>
-  <div><%= form.label :title %></div>
-  <div><%= form.text_field :title %></div>
-  <div><%= form.label :content %></div>
-  <div><%= form.text_area :content %></div>
-  <div><%= form.submit id: "create-task" %></div>
+  <div style="margin-bottom: 10px;">
+    <div><%= form.label :title %></div>
+    <div><%= form.text_field :title %></div>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <div><%= form.label :content %></div>
+    <div><%= form.text_area :content %></div>
+  </div>
+  <div style="margin-bottom: 10px;"><%= form.submit id: "create-task" %></div>
 <% end %>
 <%= link_to t('common.back'), tasks_path, id: "back" %>
