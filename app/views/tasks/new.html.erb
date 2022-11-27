@@ -1,0 +1,21 @@
+<h1><%= t('.title') %></h1>
+<%= form_with(model: @task, local: true) do |form| %>
+  <% if @task.errors.any? %>
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div style="margin-bottom: 10px;">
+    <div><%= form.label :title %></div>
+    <div><%= form.text_field :title %></div>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <div><%= form.label :content %></div>
+    <div><%= form.text_area :content %></div>
+  </div>
+  <div style="margin-bottom: 10px;"><%= form.submit id: "create-task" %></div>
+<% end %>
+<%= link_to t('common.back'), tasks_path, id: "back" %>

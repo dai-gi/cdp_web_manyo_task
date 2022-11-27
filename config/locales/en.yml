@@ -30,4 +30,32 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      task:
+        title: Title
+        content: Content
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: can't be blank
+  common:
+    show: Show
+    edit: Edit
+    destroy: Destroy
+    back: Back
+  tasks:
+    index:
+      title: Tasks Index Page
+    new:
+      title: New Task Page
+    edit:
+      title: Edit Task Page
+    show:
+      title: Show Task Page
+    create:
+      created: Task was successfully created.
+    update:
+      updated: Task was successfully updated.
+    destroy:
+      destroyed: Task was successfully destroyed.
