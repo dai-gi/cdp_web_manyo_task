@@ -3,7 +3,7 @@
 <div style="margin-bottom: 20px;">
   <div><span style="font-weight: bold; margin-right: 5px;"><%= t('dictionary.messages.title') %></span><%= @task.title %></div>
   <div><span style="font-weight: bold; margin-right: 5px;"><%= t('dictionary.messages.explanation') %></span><%= @task.content %></div>
-  <div><span style="font-weight: bold; margin-right: 5px;"><%= t('dictionary.messages.created_at') %></span><%= @task.created_at %></div>
+  <div><span style="font-weight: bold; margin-right: 5px;"><%= t('dictionary.messages.created_at') %></span><%= @task.set_date %></div>
 </div>
 
 <%= link_to t('helpers.links.edit'), edit_task_path(@task), id: "edit-user" %> |
