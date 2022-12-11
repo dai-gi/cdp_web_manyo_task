@@ -6,6 +6,9 @@ ja:
       task:
         title: タイトル
         content: 内容
+        explanation: 説明
+        created_at: 作成日時
+        confirm_destroy: 本当に削除してもよろしいですか？
   errors:
     format: "%{attribute}%{message}"
     messages:
@@ -16,9 +19,9 @@ ja:
       required: を入力してください
       taken: はすでに存在します
   flash:
-    created: タスクを登録しました。
-    updated: タスクを更新しました。
-    destroyed: タスクを削除しました。
+    created: タスクを登録しました
+    updated: タスクを更新しました
+    destroyed: タスクを削除しました
   helpers:
     submit:
       create: 登録する
@@ -31,13 +34,6 @@ ja:
       edit: 編集
       destroy: 削除
       back: 戻る
-  dictionary:
-    messages:
-      title: タイトル
-      content: 内容
-      explanation: 説明
-      created_at: 作成日時
-      confirm_destroy: 本当に削除してもよろしいですか？
   views:
     application:
       index: タスク一覧

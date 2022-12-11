@@ -10,11 +10,11 @@
     </div>
   <% end %>
   <div style="margin-bottom: 10px;">
-    <div><%= form.label t('dictionary.messages.title') %></div>
+    <div><%= form.label t('activerecord.attributes.task.title') %></div>
     <div><%= form.text_field :title %></div>
   </div>
   <div style="margin-bottom: 10px;">
-    <div><%= form.label t('dictionary.messages.content') %></div>
+    <div><%= form.label t('activerecord.attributes.task.content') %></div>
     <div><%= form.text_area :content %></div>
   </div>
   <div style="margin-bottom: 10px;"><%= form.submit id: "update-user" %></div>

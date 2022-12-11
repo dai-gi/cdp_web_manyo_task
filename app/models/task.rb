@@ -3,6 +3,6 @@ class Task < ApplicationRecord
   validates :content, presence: true
 
   def set_date
-    created_at.strftime("%Y/%m/%d %H:%M %z")
+    created_at.strftime("%Y/%m/%d %T %z")
   end
 end
