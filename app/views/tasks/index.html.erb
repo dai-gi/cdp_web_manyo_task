@@ -13,7 +13,7 @@
         <td><%= task.title %></td>
         <td><%= task.content %></td>
         <td><%= task.set_date %></td>
-      <td><%= link_to t('helpers.links.show'), task, id: "show-task" %></td>
+        <td><%= link_to t('helpers.links.show'), task, id: "show-task" %></td>
         <td><%= link_to t('helpers.links.edit'), edit_task_path(task), id: "edit-task" %></td>
         <td><%= link_to t('helpers.links.destroy'), task_path(task), method: :delete, data: {confirm: t('dictionary.messages.confirm_destroy')}, id: "destroy-task" %></td>
       </tr>
