@@ -1,10 +1,10 @@
-<h1><%= t('.title') %></h1>
+<h1><%= t('views.show.title') %></h1>
 
 <div style="margin-bottom: 20px;">
-  <div><span style="font-weight: bold; margin-right: 5px;">Title:</span><%= @task.title %></div>
-  <div><span style="font-weight: bold; margin-right: 5px;">Content:</span><%= @task.content %></div>
-  <div><span style="font-weight: bold; margin-right: 5px;">Created_at:</span><%= @task.created_at %></div>
+  <div><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.title') %></span><%= @task.title %></div>
+  <div><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.explanation') %></span><%= @task.content %></div>
+  <div><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.created_at') %></span><%= @task.set_date %></div>
 </div>
 
-<%= link_to t('common.edit'), edit_task_path(@task), id: "edit-user" %> |
-<%= link_to t('common.back'), tasks_path, id: "back" %>
+<%= link_to t('helpers.links.edit'), edit_task_path(@task), id: "edit-user" %> |
+<%= link_to t('helpers.links.back'), tasks_path, id: "back" %>
