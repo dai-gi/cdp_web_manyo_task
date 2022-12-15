@@ -1,4 +1,4 @@
-<h1><%= t('.title') %></h1>
+<h1><%= t('views.edit.title') %></h1>
 <%= form_with(model: @task, local: true) do |form| %>
   <% if @task.errors.any? %>
     <div>
@@ -10,13 +10,13 @@
     </div>
   <% end %>
   <div style="margin-bottom: 10px;">
-    <div><%= form.label :title %></div>
+    <div><%= form.label t('activerecord.attributes.task.title') %></div>
     <div><%= form.text_field :title %></div>
   </div>
   <div style="margin-bottom: 10px;">
-    <div><%= form.label :content %></div>
+    <div><%= form.label t('activerecord.attributes.task.content') %></div>
     <div><%= form.text_area :content %></div>
   </div>
   <div style="margin-bottom: 10px;"><%= form.submit id: "update-user" %></div>
 <% end %>
-<%= link_to t('common.back'), tasks_path, id: "back" %>
+<%= link_to t('helpers.links.back'), tasks_path, id: "back" %>
