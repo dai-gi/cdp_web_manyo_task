@@ -8,6 +8,9 @@ ja:
         content: 内容
         explanation: 説明
         created_at: 作成日時
+        deadline_on: 終了期限
+        priority: 優先度
+        status: ステータス
         confirm_destroy: 本当に削除してもよろしいですか？
   errors:
     format: "%{attribute}%{message}"

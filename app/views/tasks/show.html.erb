@@ -1,9 +1,12 @@
 <h1><%= t('views.show.title') %></h1>
 
 <div style="margin-bottom: 20px;">
-  <div><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.title') %></span><%= @task.title %></div>
-  <div><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.explanation') %></span><%= @task.content %></div>
-  <div><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.created_at') %></span><%= @task.set_date %></div>
+  <div><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.title') %>:</span><%= @task.title %></div>
+  <div style="margin-top: 20px;"><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.explanation') %>:</span><%= @task.content %></div>
+  <div style="margin-top: 20px;"><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.created_at') %>:</span><%= @task.set_date %></div>
+  <div style="margin-top: 20px;"><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.deadline_on') %>:</span><%= @task.set_deadline_on %></div>
+  <div style="margin-top: 20px;"><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.priority') %>:</span><%= @task.priority %></div>
+  <div style="margin-top: 20px;"><span style="font-weight: bold; margin-right: 5px;"><%= t('activerecord.attributes.task.status') %>:</span><%= @task.status %></div>
 </div>
 
 <%= link_to t('helpers.links.edit'), edit_task_path(@task), id: "edit-user" %> |
