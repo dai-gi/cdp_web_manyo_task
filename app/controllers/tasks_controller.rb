@@ -1,6 +1,12 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.order(created_at: :DESC).page(params[:page])
+    if params[:sort_deadline_on]
+      @tasks = Task.order(deadline_on: :ASC).page(params[:page])
+    elsif params[:sort_priority]
+      @tasks = Task.order(priority: :DESC).page(params[:page])
+    else
+      @tasks = Task.order(created_at: :DESC).page(params[:page])
+    end
   end
 
   def new
