@@ -4,6 +4,14 @@ class TasksController < ApplicationController
       @tasks = Task.order(deadline_on: :ASC).page(params[:page])
     elsif params[:sort_priority]
       @tasks = Task.order(priority: :DESC).page(params[:page])
+    elsif params[:search]
+      if params[:search][:title].present? and params[:search][:status].present?
+        @tasks = Task.where("title LIKE ?", "%#{params[:search][:title]}%").where(status: params[:search][:status]).page(params[:page])
+      elsif params[:search][:title].present?
+        @tasks = Task.where("title LIKE ?", "%#{params[:search][:title]}%").page(params[:page])
+      elsif params[:search][:status].present?
+        @tasks = Task.where(status: params[:search][:status]).page(params[:page])
+      end
     else
       @tasks = Task.order(created_at: :DESC).page(params[:page])
     end
