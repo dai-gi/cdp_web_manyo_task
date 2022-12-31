@@ -1,20 +1,6 @@
 class TasksController < ApplicationController
   def index
-    if params[:sort_deadline_on]
-      @tasks = Task.order(deadline_on: :ASC).page(params[:page])
-    elsif params[:sort_priority]
-      @tasks = Task.order(priority: :DESC).page(params[:page])
-    elsif params[:search]
-      if params[:search][:title].present? and params[:search][:status].present?
-        @tasks = Task.where("title LIKE ?", "%#{params[:search][:title]}%").where(status: params[:search][:status]).page(params[:page])
-      elsif params[:search][:title].present?
-        @tasks = Task.where("title LIKE ?", "%#{params[:search][:title]}%").page(params[:page])
-      elsif params[:search][:status].present?
-        @tasks = Task.where(status: params[:search][:status]).page(params[:page])
-      end
-    else
-      @tasks = Task.order(created_at: :DESC).page(params[:page])
-    end
+    @tasks = Task.choose_tasks_processing(processing_params).page(params[:page])
   end
 
   def new
@@ -57,5 +43,9 @@ class TasksController < ApplicationController
   private
     def task_params
       params.require(:task).permit(:title, :content, :deadline_on, :priority, :status)
+    end
+
+    def processing_params
+      params.fetch(:task, {}).permit(:sort_deadline_on, :sort_priority, :status, :title)
     end
 end
