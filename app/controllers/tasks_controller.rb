@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.choose_tasks_processing(processing_params).page(params[:page])
+    @tasks = Task.search(task_params).page(params[:page])
   end
 
   def new
@@ -14,7 +14,6 @@ class TasksController < ApplicationController
     else
       render :new
     end
-
   end
 
   def show
@@ -42,10 +41,6 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:title, :content, :deadline_on, :priority, :status)
-    end
-
-    def processing_params
-      params.fetch(:task, {}).permit(:sort_deadline_on, :sort_priority, :status, :title)
+      params.require(:task).permit(:title, :content, :deadline_on, :priority, :status, :sort_deadline_on, :sort_priority)
     end
 end

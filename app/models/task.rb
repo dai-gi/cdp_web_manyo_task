@@ -17,27 +17,23 @@ class Task < ApplicationRecord
     deadline_on.strftime("%F")
   end
 
-  scope :choose_tasks_processing, -> (processing_params) do
-    normal(processing_params)
-    .search(processing_params)
-    .sort_deadline_on(processing_params[:sort_deadline_on])
-    .sort_priority(processing_params[:sort_priority])
-  end
+  scope :search, -> (task_params) do
 
-  scope :normal, -> (processing_params) { order(created_at: :DESC) if processing_params.blank? }
-
-  scope :search, -> (processing_params) {
-    if processing_params[:title].present? and processing_params[:status].present?
-      where("title LIKE ?", "%#{processing_params[:title]}%").where(status: processing_params[:status])
-    elsif processing_params[:title].present?
-      where("title LIKE ?", "%#{processing_params[:title]}%")
-    elsif processing_params[:status].present?
-      where(status: processing_params[:status])
+    if task_params[:sort_deadline_on].present?
+      order(deadline_on: :ASC)
+    elsif task_params[:sort_priority].present?
+      order(priority: :DESC)
+    elsif task_params.present?
+      if task_params[:title].present? and task_params[:status].present?
+        where("title LIKE ?", "%#{task_params[:title]}%").where(status: task_params[:status])
+      elsif task_params[:title].present?
+        where("title LIKE ?", "%#{task_params[:title]}%")
+      elsif task_params[:status].present?
+        where(status: processing_params[:status])
+      end
+    else
+      order(created_at: :DESC)
     end
-  }
 
-  scope :sort_deadline_on, -> (processing_params) { order(deadline_on: :ASC) if processing_params.present? }
-
-  scope :sort_priority, -> (processing_params) { order(priority: :DESC) if processing_params.present? }
-
+  end
 end
