@@ -29,7 +29,7 @@ class Task < ApplicationRecord
       elsif task_params[:title].present?
         where("title LIKE ?", "%#{task_params[:title]}%")
       elsif task_params[:status].present?
-        where(status: processing_params[:status])
+        where(status: task_params[:status])
       end
     else
       order(created_at: :DESC)

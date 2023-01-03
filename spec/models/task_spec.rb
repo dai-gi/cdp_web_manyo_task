@@ -25,24 +25,43 @@ RSpec.describe Task, type: :model do
   end
 
   describe '検索機能' do
-    subject { described_class. }
+    subject { described_class.search(@task_params) }
+
+    let!(:first_task) {create(:first_task)}
+    let!(:second_task) {create(:second_task)}
+    let!(:third_task) {create(:third_task)}
+
     context 'scopeメソッドでタイトルのあいまい検索をした場合' do
       it "検索ワードを含むタスクが絞り込まれる" do
         # toとnot_toのマッチャを使って検索されたものとされなかったものの両方を確認する
-
+        @task_params = ActionController::Parameters.new(title: "書類")
+        is_expected.to eq [first_task]
+        is_expected.not_to eq [second_task]
+        is_expected.not_to eq [third_task]
         # 検索されたテストデータの数を確認する
+        expect(subject.count).to eq 1
       end
     end
     context 'scopeメソッドでステータス検索をした場合' do
       it "ステータスに完全一致するタスクが絞り込まれる" do
         # toとnot_toのマッチャを使って検索されたものとされなかったものの両方を確認する
+        @task_params = ActionController::Parameters.new(status: "着手中")
+        is_expected.to eq [second_task]
+        is_expected.not_to eq [first_task]
+        is_expected.not_to eq [third_task]
         # 検索されたテストデータの数を確認する
+        expect(subject.count).to eq 1
       end
     end
     context 'scopeメソッドでタイトルのあいまい検索とステータス検索をした場合' do
       it "検索ワードをタイトルに含み、かつステータスに完全一致するタスクが絞り込まれる" do
         # toとnot_toのマッチャを使って検索されたものとされなかったものの両方を確認する
+        @task_params = ActionController::Parameters.new(title: "請求書作成", status: "完了")
+        is_expected.to eq [third_task]
+        is_expected.not_to eq [first_task]
+        is_expected.not_to eq [second_task]
         # 検索されたテストデータの数を確認する
+        expect(subject.count).to eq 1
       end
     end
   end
