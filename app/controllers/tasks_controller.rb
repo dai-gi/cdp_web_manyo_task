@@ -41,6 +41,6 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:title, :content, :deadline_on, :priority, :status, :sort_deadline_on, :sort_priority)
+      params.fetch(:task, {}).permit(:title, :content, :deadline_on, :priority, :status, :sort_deadline_on, :sort_priority)
     end
 end

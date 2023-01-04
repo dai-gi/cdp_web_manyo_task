@@ -63,4 +63,21 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
+
+  config.before(:each, type: :system) do
+    driven_by(:selenium_chrome_headless)
+  end
+
+  config.before(:suite) do
+    # DBを綺麗にする手段を指定、トランザクションを張ってrollbackするように指定
+    DatabaseCleaner.strategy = :transaction
+    # truncate table文を実行し、レコードを消す
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  # exampleが始まるごとに実行
+  config.before(:each) do
+    # strategyがtransactionなので、トランザクションを張る
+    DatabaseCleaner.start
+  end
 end
