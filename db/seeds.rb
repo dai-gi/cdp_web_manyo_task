@@ -1,23 +1,9 @@
-priority = '低'
-status = '完了'
-created_at = '2022-11-10'
-deadline_on = '2022-11-25'
+contents = ['買い物', 'ジムに行く', '晩御飯を作る', '打ち合わせ', '犬の散歩']
+created_at = ['2023-2-18', '2023-2-17', '2023-2-16', '2023-2-15', '2023-2-14']
+deadline_on = ['2023-3-18', '2023-3-17', '2023-3-16', '2023-3-15', '2023-3-14']
+priorities = ['低', '中', '高']
+status = ['未着手', '着手中', '完了']
 
-50.times do |n|
-  n += 1
-
-  case n
-  when 20 then
-    priority = '高'
-    status = '着手中'
-    created_at = '2022-11-15'
-    deadline_on = '2022-11-30'
-  when 35 then
-    priority = '中'
-    status = '未着手'
-    created_at = '2022-11-20'
-    deadline_on = '2022-12-1'
-  end
-
-  Task.create(title: "タスク#{n}", content: "タスク#{n}を行う" ,created_at: "#{created_at}", deadline_on: "#{deadline_on}", priority: "#{priority}", status: "#{status}")
+10.times do |i|
+  Task.create(title: "タスク#{i+1}", content: contents[rand(0..4)], created_at: created_at[rand(0..4)], deadline_on: deadline_on[rand(0..4)], priority: priorities[rand(0..2)], status: status[rand(0..2)])
 end
