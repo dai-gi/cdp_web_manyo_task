@@ -20,6 +20,7 @@ class Task < ApplicationRecord
   scope :search, -> (task_params) do
 
     if task_params[:sort_deadline_on].present?
+      order(deadline_on: :ASC) if 
       order(deadline_on: :ASC)
     elsif task_params[:sort_priority].present?
       order(priority: :DESC)

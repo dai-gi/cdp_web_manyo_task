@@ -28,7 +28,6 @@ ja:
   helpers:
     submit:
       create: 登録する
-      submit: 検索
       update: 更新する
     links:
       index: タスク一覧
