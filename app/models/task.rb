@@ -20,10 +20,9 @@ class Task < ApplicationRecord
   scope :search, -> (task_params) do
 
     if task_params[:sort_deadline_on].present?
-      order(deadline_on: :ASC) if 
       order(deadline_on: :ASC)
     elsif task_params[:sort_priority].present?
-      order(priority: :DESC)
+      order(:priority, created_at: :DESC)
     elsif task_params.present?
       if task_params[:title].present? and task_params[:status].present?
         where("title LIKE ?", "%#{task_params[:title]}%").where(status: task_params[:status])
