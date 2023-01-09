@@ -1,16 +1,16 @@
 <h1><%= t('views.index.title') %></h1>
-<%= form_with(scope: :task, url: tasks_path, method: :get, local: true) do |form| %>
+<%= form_with(scope: :search, url: tasks_path, method: :get, local: true) do |form| %>
   <div style="margin-bottom: 10px;">
     <div>
       <%= form.label t('activerecord.attributes.task.status') %>
-      <span><%= form.select :status, ['完了', '着手中', '未着手'], { include_blank: ' ' } %></span>
+      <span><%= form.select :status, ['未着手', '着手中', '完了'], { include_blank: ' ' } %></span>
     </div>
     <div>
       <%= form.label t('activerecord.attributes.task.title') %>
       <span><%= form.text_field :title %></span>
     </div>
   </div>
-  <div style="margin-bottom: 10px;"><%= form.submit id: "create-task" %></div>
+  <div style="margin-bottom: 10px;"><%= form.submit id: "search-task" %></div>
 <% end %>
 <table>
   <thead>
